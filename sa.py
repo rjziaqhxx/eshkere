@@ -22,8 +22,8 @@ class Circle(Shape):
     
 class ColoredCircle(Circle, Colored):
     def __init__(self, radius, color):
-        self.radius = radius
-        self.color = color
+        Circle.__init__(self, radius)
+        Colored.__init__(self, color)
     
     def __str__(self):
         return f'Colored circle of color {self.color}'
