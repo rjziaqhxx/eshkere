@@ -31,13 +31,15 @@ class ColoredCircle(Circle, Colored):
     def __add__(self, other):
         new_radius = self.radius + other.radius
         if self.color == other.color:
-            return new_radius, self.color
+            new_color = self.color
         else:
-            return new_radius, 'mixed'   
+            new_color = 'mixed'
 
-    def __nul__(self, other):
-        new_radius = self.radius * other
-        return round(new_radius, 2)
+        return ColoredCircle(new_radius, new_color)  
+         
+
+    def __mul__(self, n):
+        return round(self.radius * n, 2)
     
     def __eq__(self, other):
         if self.radius == other.radius and self.color == other.color:
@@ -50,6 +52,8 @@ obj2 = ColoredCircle(10,'black')
 
 
 
-new = obj.__add__(obj2)
+new = obj + obj2
+new_mul = obj * 5
+print(new_mul)
 print(new)
 print(obj == obj2)
